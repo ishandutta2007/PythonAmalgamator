@@ -40,5 +40,5 @@ if len(paths) == 0:
 
 for path in paths:
     file = path.split("\\")[-1]
-    print("copytnig", path, "to", current_dir + "/" + file)
-    shutil.copyfile(path, current_dir + "/" + file)
+    print("copying", path, "to", current_dir + "/Temp/" + file)
+    shutil.copyfile(path, current_dir + "/Temp/" + file)
