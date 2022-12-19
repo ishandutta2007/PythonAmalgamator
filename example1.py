@@ -13,8 +13,8 @@ current_dir = str(Path.cwd())
 current_file_path = Path(__file__).absolute()
 module_path = importlib.util.find_spec("sympy").origin
 print(
+    "open this path and write before return raise Exception('Deliberate') and run again =>",
     module_path,
-    "<= open this path and write before return raise Exception('Deliberate') and run again",
 )
 paths = []
 try:
@@ -36,6 +36,7 @@ except Exception as e:
     paths = list(set(paths))
     pp.pprint(paths)
     print(current_file_path)
+
 if len(paths) == 0:
     paths = ["C:\\Python310\\Lib\\site-packages\\sympy\\ntheory\\generate.py"]
     pp.pprint(paths)
