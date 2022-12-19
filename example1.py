@@ -44,4 +44,8 @@ for path in paths:
     file = path.split("\\")[-1]
     print("copying", path, "to", current_dir + "/Temp/" + file)
     shutil.copyfile(path, current_dir + "/Temp/" + file)
-    filereplace(current_dir + "/Temp/" + file, "Exception('Deliberate')", "")
+
+for path in paths:
+    file = path.split("\\")[-1]
+    print("replacing Exception('Deliberate') in file", current_dir + "/Temp/" + file)
+    filereplace(current_dir + "/Temp/" + file, "Exception\\(+'Deliberate'\\)+\n", "\n")
