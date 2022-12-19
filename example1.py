@@ -5,6 +5,7 @@ import inspect
 import importlib.util
 import pprint as pp
 from pathlib import Path
+import shutil
 
 current_dir = Path.cwd()
 current_file_path = Path(__file__).absolute()
@@ -33,10 +34,10 @@ except Exception as e:
     paths = list(set(paths))
     pp.pprint(paths)
     print(current_file_path)
-    if len(paths) == 0:
-        paths = ["C:\\Python310\\Lib\\site-packages\\sympy\\ntheory\\generate.py"]
-    import shutil
+if len(paths) == 0:
+    paths = ["C:\\Python310\\Lib\\site-packages\\sympy\\ntheory\\generate.py"]
+    pp.pprint(paths)
 
-    for path in paths:
-        print("copytnig", path, "to", current_dir + "/" + path.split("/")[-1])
-        shutil.copyfile(path, current_dir + "/" + path.split("/")[-1])
+for path in paths:
+    print("copytnig", path, "to", current_dir + "/" + path.split("/")[-1])
+    shutil.copyfile(path, current_dir + "/" + path.split("/")[-1])
