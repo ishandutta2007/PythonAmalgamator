@@ -7,7 +7,7 @@ import pprint as pp
 from pathlib import Path
 import shutil
 
-current_dir = Path.cwd()
+current_dir = str(Path.cwd())
 current_file_path = Path(__file__).absolute()
 module_path = importlib.util.find_spec("sympy").origin
 print(
@@ -39,5 +39,6 @@ if len(paths) == 0:
     pp.pprint(paths)
 
 for path in paths:
-    print("copytnig", path, "to", current_dir + "/" + path.split("/")[-1])
-    shutil.copyfile(path, current_dir + "/" + path.split("/")[-1])
+    file = path.split("\\")[-1]
+    print("copytnig", path, "to", current_dir + "/" + file)
+    shutil.copyfile(path, current_dir + "/" + file)
