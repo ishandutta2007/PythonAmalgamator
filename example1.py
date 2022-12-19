@@ -14,6 +14,7 @@ print(
     module_path,
     "<= open this path and write before return raise Exception('Deliberate') and run again",
 )
+paths = []
 try:
     p = list(sympy.primerange(3, 10))  # Your sympy function
     print(p)
@@ -21,7 +22,6 @@ except Exception as e:
     tb = traceback.format_exc()
     lines = tb.split("\n")
     lines = [s.strip() for s in lines]
-    paths = []
     for l in lines:
         if "C:\\" in l:
             pot_paths = l.split(" ")
