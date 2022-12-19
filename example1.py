@@ -6,12 +6,15 @@ import importlib.util
 import pprint as pp
 from pathlib import Path
 
-current_dir =Path.cwd()
-current_file_path=Path(__file__).absolute()
-module_path=importlib.util.find_spec("sympy").origin
-print(module_path, "<= open this path and write before return raise Exception('Deliberate') and run again")
+current_dir = Path.cwd()
+current_file_path = Path(__file__).absolute()
+module_path = importlib.util.find_spec("sympy").origin
+print(
+    module_path,
+    "<= open this path and write before return raise Exception('Deliberate') and run again",
+)
 try:
-    p = list(sympy.primerange(3, 10))#Your sympy function
+    p = list(sympy.primerange(3, 10))  # Your sympy function
     print(p)
 except Exception as e:
     tb = traceback.format_exc()
@@ -20,21 +23,20 @@ except Exception as e:
     paths = []
     for l in lines:
         if "C:\\" in l:
-            pot_paths = l.split(' ')
+            pot_paths = l.split(" ")
             # print("pot_path",pot_paths)
             for pot_path in pot_paths:
                 if "C:\\" in pot_path:
                     paths.append(pot_path)
                     break
-    paths = [s.strip().replace(',','').replace('"','') for s in paths]
+    paths = [s.strip().replace(",", "").replace('"', "") for s in paths]
     paths = list(set(paths))
     pp.pprint(paths)
     print(current_file_path)
-    if len(paths)==0:
-        paths=['C:\\Python310\\Lib\\site-packages\\sympy\\ntheory\\generate.py']
+    if len(paths) == 0:
+        paths = ["C:\\Python310\\Lib\\site-packages\\sympy\\ntheory\\generate.py"]
     import shutil
+
     for path in paths:
-        shutil.copyfile(path, current_dir+path.split("/")[-1])
-        
-
-
+        print("copytnig", path, "to", current_dir + "/" + path.split("/")[-1])
+        shutil.copyfile(path, current_dir + "/" + path.split("/")[-1])
