@@ -6,6 +6,8 @@ import importlib.util
 import pprint as pp
 from pathlib import Path
 import shutil
+from pyutil import filereplace
+
 
 current_dir = str(Path.cwd())
 current_file_path = Path(__file__).absolute()
@@ -42,3 +44,4 @@ for path in paths:
     file = path.split("\\")[-1]
     print("copying", path, "to", current_dir + "/Temp/" + file)
     shutil.copyfile(path, current_dir + "/Temp/" + file)
+    filereplace(current_dir + "/Temp/" + file, "Exception('Deliberate')", "")
